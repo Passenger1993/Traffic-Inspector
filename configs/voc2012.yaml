@@ -1,0 +1,28 @@
+data:
+  root: data/VOCdevkit/VOC2012      # путь к папке VOC2012
+  split: train                       # train или val (для обучения)
+  img_height: 512
+  img_width: 512
+  batch_size: 8
+  num_workers: 4
+
+model:
+  num_classes: 21
+  bilinear: false
+
+train:
+  epochs: 20
+  lr: 0.0001
+  weight_decay: 0.00001
+  seg_weight: 1.0
+  cls_weight: 0.5
+  checkpoint_dir: ./checkpoints_voc
+  log_dir: ./logs_voc
+  resume: null
+
+inference:                           # для evaluate/inference
+  model_checkpoint: ./checkpoints_voc/best_model.pth
+  output_dir: ./evaluation_results_voc
+  num_samples: 10
+
+device: auto

@@ -1,0 +1,31 @@
+# Конфигурация для отладки на mock-датасете (небольшом синтетическом)
+data:
+  train_images: data/mock/images/train
+  train_labels: data/mock/labels/train
+  val_images: data/mock/images/val
+  val_labels: data/mock/labels/val
+  img_height: 64
+  img_width: 64
+  batch_size: 2
+  num_workers: 0         # для Windows часто ставят 0, чтобы избежать проблем с мультипроцессингом
+
+model:
+  num_classes: 6
+  bilinear: false
+
+train:
+  epochs: 2
+  lr: 0.001
+  weight_decay: 1e-5
+  seg_weight: 1.0
+  cls_weight: 0.5
+  checkpoint_dir: checkpoints/checkpoints_mock
+  log_dir: logs/logs_mock
+  resume: null
+
+evaluate:                # переименовано из inference для единообразия
+  model_checkpoint: checkpoints/checkpoints_mock/best_model.pth   # путь должен совпадать с checkpoint_dir
+  output_dir: results/evaluation_results_mock
+  num_samples: 5
+
+device: cpu              # принудительно CPU, так как mock-датасет маленький

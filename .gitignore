@@ -1,0 +1,23 @@
+*.egg-info/
+__pycache__/
+/data
+
+*.py[cod]
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# IDE
+.idea/
+.vscode/
+
+# Secrets & environment
+.env
+*.token
+
+# Distribution
+*.egg-info/
+dist/
+build/
